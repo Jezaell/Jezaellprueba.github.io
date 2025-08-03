@@ -17,6 +17,25 @@ body {
   width: 90%;
   max-width: 500px;
 }
+#pagadas-container {
+  margin-top: 30px;
+}
+
+#borrar-historial {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+#borrar-historial:hover {
+  background-color: #d32f2f;
+}
 
 h1 {
   text-align: center;
@@ -75,3 +94,4 @@ button:hover {
 .factura button:hover {
   background-color: #d32f2f;
 }
+
