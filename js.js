@@ -1,15 +1,13 @@
-// script.js
 let facturas = JSON.parse(localStorage.getItem('facturas')) || [];
 
 const form = document.getElementById('factura-form');
 const facturasDiv = document.getElementById('facturas');
-const pagadasDiv = document.createElement('div');
-pagadasDiv.id = 'pagadas';
-document.querySelector('.container').appendChild(pagadasDiv);
+const pagadasDiv = document.getElementById('pagadas');
+const borrarHistorialBtn = document.getElementById('borrar-historial');
 
 function mostrarFacturas() {
   facturasDiv.innerHTML = '';
-  pagadasDiv.innerHTML = '<h2>Pagadas</h2>';
+  pagadasDiv.innerHTML = '';
 
   facturas.forEach((factura, i) => {
     const diasRestantes = Math.ceil((new Date(factura.fecha) - new Date()) / (1000 * 60 * 60 * 24));
@@ -64,6 +62,12 @@ function marcarPagado(index) {
   localStorage.setItem('facturas', JSON.stringify(facturas));
   mostrarFacturas();
 }
+
+borrarHistorialBtn.addEventListener('click', () => {
+  facturas = facturas.filter(f => !f.pagado);
+  localStorage.setItem('facturas', JSON.stringify(facturas));
+  mostrarFacturas();
+});
 
 function enviarNotificacion(mensaje) {
   if (!('Notification' in window)) return;
